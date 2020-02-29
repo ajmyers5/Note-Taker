@@ -14,6 +14,7 @@ module.exports =function(app){
 
     // Create New Notes - takes in JSON input
   app.post("/api/notes", function(req, res) {
+    console.log("hello")
     var notes = getNotes()
         // req.body hosts is equal to the JSON post sent from the user
         // This works because of our body parsing middleware
@@ -22,7 +23,6 @@ module.exports =function(app){
         const newNote = req.body;
         notes.push(newNote);
         console.log("outsideWriteFile")
-
         fs.writeFile("./db/db.json", JSON.stringify(notes), function(err){
             if (err){
                 console.log(err)
