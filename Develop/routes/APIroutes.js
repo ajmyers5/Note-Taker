@@ -1,7 +1,9 @@
 const path = require("path")
 const fs = require("fs")
+const getNotes = require("../will")
 
-module.exports = function(app){
+module.exports =function(app){
+  
 
   app.get("/api/notes", function(req, res) {
     //res.send(notes)??
@@ -12,12 +14,14 @@ module.exports = function(app){
 
     // Create New Notes - takes in JSON input
   app.post("/api/notes", function(req, res) {
+    var notes = getNotes()
         // req.body hosts is equal to the JSON post sent from the user
         // This works because of our body parsing middleware
-        var notes = []
+       
+       
         const newNote = req.body;
         notes.push(newNote);
-        console.log("outsideWF")
+        console.log("outsideWriteFile")
 
         fs.writeFile("./db/db.json", JSON.stringify(notes), function(err){
             if (err){
@@ -32,6 +36,8 @@ module.exports = function(app){
       
         res.json(notes);
       });
+  
+
 
       //DELETE
     app.delete("/api/notes/:id", function(req, res){

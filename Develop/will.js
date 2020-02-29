@@ -5,3 +5,11 @@
 // add newNote to the populated notesArray
 // rewrite the entire json file everytime with the new information
 // use fs library to writeFile("./db/db.json", notesArray)
+let fs = require("fs")
+
+function getNotes(){
+return readFile("./db/db.json", "utf8")
+}
+
+
+module.exports = getNotes

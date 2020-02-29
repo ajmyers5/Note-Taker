@@ -17,6 +17,11 @@ app.use(express.static("public"));
 require("./routes/HTMLroutes")(app)
 require("./routes/APIroutes")(app)
 
+
+app.listen(PORT, function() {
+  console.log(`App listening on ${PORT}`);
+});
+
 // HTML Routes
 // =============================================================
 // app.get("/notes", function(req, res) {
@@ -67,6 +72,6 @@ require("./routes/APIroutes")(app)
 
   // Starts the server to begin listening
   // =============================================================
-  app.listen(PORT, function() {
-    console.log(`App listening on ${PORT}`);
-  });
+  // app.listen(PORT, function() {
+  //   console.log(`App listening on ${PORT}`);
+  // });
